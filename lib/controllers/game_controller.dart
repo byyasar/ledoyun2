@@ -1,14 +1,10 @@
 import 'dart:math';
 import 'package:get/get.dart';
-import 'package:ledoyun2/controllers/timer_state.dart';
 import 'package:ledoyun2/game_screen/widgets/cell.dart';
 
 class GameController extends GetxController {
-  //final TimerState timeController = Get.put(TimerState());
-  //final TimerState timeController =Get.find<TimerState>();
-  /*RxList<int> _board = RxList<int>();
-  List<int> get board => _board.value;
-  set board(List<int> value) => _board.value = value;*/
+  //final TimerState timerController = Get.put(TimerState());
+
   RxList<List<int>> _board = RxList<List<int>>();
   List<List<int>> get board => _board.value;
   set board(List<List<int>> value) => _board.value = value;
@@ -57,7 +53,7 @@ class GameController extends GetxController {
   // ignore: non_constant_identifier_names
   void RastgeleSayiUret() {
     _RastgeleSayi.value = random.nextInt(_ledSayisi);
-    print('RastgeleSayi : $RastgeleSayi');
+   // print('RastgeleSayi : $RastgeleSayi');
   }
 
   RxInt _hiz = 0.obs;
@@ -87,7 +83,7 @@ class GameController extends GetxController {
   void _buildBoard() {
     board = [List.filled(16, 0)];
     _hiz.value = _level.value * 50;
-    update();
+    //update();
   }
 
   @override
@@ -116,7 +112,7 @@ class GameController extends GetxController {
 
   void resetLevel() {
     resetGame();
-    //TimerState().start();
+    print('reset game');
   }
 
   void nextLevel() {
@@ -125,6 +121,7 @@ class GameController extends GetxController {
     _puan.value = (_level.value * 3 - _hata.value);
     _hata.value = 0;
     hizlan(50);
+    levelArtir();
   }
 
   void dondur() {
@@ -136,11 +133,10 @@ class GameController extends GetxController {
   }
 
   void durumKontrol() {
-    print('RastgeleSayi: $RastgeleSayi- index : $_index');
+    //print('RastgeleSayi: $RastgeleSayi- index : $_index');
     if (_index == RastgeleSayi) {
       winner = 1;
       declareWinner();
-      levelArtir();
     } else {
       hataArtir(1);
       if (_hata.value == 3) {

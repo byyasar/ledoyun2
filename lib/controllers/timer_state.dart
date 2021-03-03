@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:ledoyun2/controllers/game_controller.dart';
 
 class TimerState extends GetxController {
@@ -11,7 +10,7 @@ class TimerState extends GetxController {
 
   
 
-  final player = AudioCache();
+  //final player = AudioCache();
 
   // the two lines below are the same, just different ways of
   // doing the same thing
@@ -122,7 +121,7 @@ class TimerState extends GetxController {
 
       // this will only play the sound every 4th time this function runs
       if (i % 4 == 0) {
-        player.play('alarm.wav');
+        //.play('alarm.wav');
       }
       i++;
     });

@@ -127,6 +127,7 @@ class TimerState extends GetxController {
     });
   }
 
+  // ignore: must_call_super
   void dispose() {
     t.cancel();
     t2.cancel();

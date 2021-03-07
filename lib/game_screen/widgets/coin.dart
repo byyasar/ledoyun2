@@ -11,12 +11,26 @@ class Coin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 35,
-      width: 35,
-      decoration: BoxDecoration(
-          gradient: RadialGradient(colors: coinColor),
-          borderRadius: BorderRadius.circular(32)),
-    );
+    return Stack(children: [
+      Center(
+        child: Container(
+          //color: Colors.grey,
+          height: 40,
+          width: 40,
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white),
+
+         
+        ),
+      ),
+      Center(
+        child: Container(
+          height: 35,
+          width: 35,
+          decoration: BoxDecoration(
+              gradient: RadialGradient(colors: coinColor),
+              borderRadius: BorderRadius.circular(30)),
+        ),
+      ),
+    ]);
   }
 }

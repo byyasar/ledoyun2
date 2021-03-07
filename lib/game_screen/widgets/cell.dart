@@ -38,9 +38,10 @@ class Cell extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 50,
-          width: 50,
+          height: 45,
+          width: 45,
           color: ColorConstants.instance.bgColor,
+          //color: Colors.grey[800],
         ),
         Positioned.fill(
             child: Align(

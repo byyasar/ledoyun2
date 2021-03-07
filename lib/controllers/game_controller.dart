@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/src/widgets/basic.dart';
 import 'package:get/get.dart';
 import 'package:ledoyun2/game_screen/widgets/cell.dart';
 
@@ -6,6 +7,7 @@ class GameController extends GetxController {
   //final TimerState timerController = Get.put(TimerState());
 
   RxList<List<int>> _board = RxList<List<int>>();
+  // ignore: invalid_use_of_protected_member
   List<List<int>> get board => _board.value;
   set board(List<List<int>> value) => _board.value = value;
   Random random = Random();
@@ -53,7 +55,7 @@ class GameController extends GetxController {
   // ignore: non_constant_identifier_names
   void RastgeleSayiUret() {
     _RastgeleSayi.value = random.nextInt(_ledSayisi);
-   // print('RastgeleSayi : $RastgeleSayi');
+    // print('RastgeleSayi : $RastgeleSayi');
   }
 
   RxInt _hiz = 0.obs;
@@ -92,22 +94,45 @@ class GameController extends GetxController {
     _buildBoard();
     _gameBoard();
     // print(board);
+    board[0][0] = 1;
   }
 
   int winner = 0;
   void declareWinner() {
     Get.defaultDialog(
-        //backgroundColor: ColorConstants.instance.bgColor,
-        title: _hata.value == 0
-            ? 'MÜKEMMEL'
-            : _hata.value == 1
-                ? 'SüPER'
-                : _hata.value == 2
-                    ? 'BRAVO'
-                    : 'OYUN BİTTİ !!!',
-        content: Cell(
-          currentCellMode: winner == 1 ? cellMode.YELLOW : cellMode.RED,
-        )).then((value) => winner == 1 ? nextLevel() : resetLevel());
+      //backgroundColor: ColorConstants.instance.bgColor,
+      title: _hata.value == 0
+          ? 'MÜKEMMEL'
+          : _hata.value == 1
+              ? 'SüPER'
+              : _hata.value == 2
+                  ? 'BRAVO'
+                  : 'OYUN BİTTİ !!!',
+      content: _hata.value == 0
+          ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Cell(
+                  currentCellMode:
+                      winner == 1 ? cellMode.YELLOW : cellMode.RED),
+              Cell(
+                  currentCellMode:
+                      winner == 1 ? cellMode.YELLOW : cellMode.RED),
+              Cell(
+                  currentCellMode:
+                      winner == 1 ? cellMode.YELLOW : cellMode.RED),
+            ])
+          : _hata.value == 1
+              ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Cell(
+                      currentCellMode:
+                          winner == 1 ? cellMode.YELLOW : cellMode.RED),
+                  Cell(
+                      currentCellMode:
+                          winner == 1 ? cellMode.YELLOW : cellMode.RED)
+                ])
+              : Cell(
+                  currentCellMode:
+                      winner == 1 ? cellMode.YELLOW : cellMode.RED),
+    ).then((value) => winner == 1 ? nextLevel() : resetLevel());
   }
 
   void resetLevel() {
@@ -120,7 +145,7 @@ class GameController extends GetxController {
     _gameBoard();
     _puan.value = (_level.value * 3 - _hata.value);
     _hata.value = 0;
-    hizlan(50);
+    _hizZaman.value<=200?hizlan(10):hizlan(100);
     levelArtir();
   }
 
@@ -139,6 +164,8 @@ class GameController extends GetxController {
       declareWinner();
     } else {
       hataArtir(1);
+      _buildBoard();
+       _gameBoard();
       if (_hata.value == 3) {
         winner = 0;
         declareWinner();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ledoyun2/core/extension/color_constant.dart';
+import 'package:ledoyun2/core/constant/cell_constant.dart';
+import 'package:ledoyun2/core/constant/color_constant.dart';
 import 'package:ledoyun2/game_screen/widgets/coin.dart';
 
 enum cellMode {
@@ -38,9 +39,9 @@ class Cell extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 45,
-          width: 45,
-          color: ColorConstants.instance.bgColor,
+          height: CellConstant.instance.cellBorderHeight,
+          width: CellConstant.instance.cellBorderWitdh,
+          //color: ColorConstants.instance.white,
           //color: Colors.grey[800],
         ),
         Positioned.fill(

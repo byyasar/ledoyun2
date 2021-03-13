@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ledoyun2/core/extension/bindings/main_bindings.dart';
+import 'package:ledoyun2/core/bindings/main_bindings.dart';
 import 'package:ledoyun2/game_screen/game_screen.dart';
 
 void main() {
@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       initialBinding: MainBindings(),
-      title: 'Flutter game',
+      title: 'JavaScript game',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ledoyun2/controllers/game_controller.dart';
 import 'package:ledoyun2/controllers/timer_state.dart';
-//import 'package:ledoyun2/core/extension/color_constant.dart';
 import 'package:ledoyun2/core/extension/context_extension.dart';
 import 'package:ledoyun2/game_screen/widgets/board_ring.dart';
 import 'package:ledoyun2/game_screen/widgets/skorboard.dart';
@@ -36,8 +35,8 @@ class Board extends StatelessWidget {
       height: yuk,
       child: GetBuilder<GameController>(
         builder: (GetxController gameController) => Column(children: [
-          Expanded(flex: 2, child: Skorboard()),
-          Expanded(flex: 6, child: Stack(children: _buildBoard())),
+          Expanded(flex: 1, child: Skorboard()),
+          Expanded(flex: 8, child: Stack(children: _buildBoard())),
         ]),
       ),
     );

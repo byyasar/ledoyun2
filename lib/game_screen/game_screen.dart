@@ -1,8 +1,7 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ledoyun2/controllers/game_controller.dart';
-import 'package:ledoyun2/core/extension/color_constant.dart';
+import 'package:ledoyun2/core/constant/color_constant.dart';
 import 'package:ledoyun2/game_screen/widgets/game_body.dart';
 
 // ignore: must_be_immutable

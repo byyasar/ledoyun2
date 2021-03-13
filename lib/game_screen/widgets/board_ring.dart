@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ledoyun2/controllers/game_controller.dart';
-import 'package:ledoyun2/core/extension/color_constant.dart';
+import 'package:ledoyun2/core/constant/cell_constant.dart';
 import 'package:ledoyun2/game_screen/widgets/cell.dart';
 import 'package:ledoyun2/core/extension/context_extension.dart';
 
@@ -39,15 +39,17 @@ class BoardRing extends StatelessWidget {
   List<Widget> _listeyaz() {
     List<Widget> ledList = [];
     var ix = 0;
-    double artis = 360 / 16;
+    double artis = 360 / CellConstant.instance.ledSayisi;
     //print(_buildBoardColumn().length);
     _buildBoardColumn().asMap().forEach((i, val) {
       //print('$i: $val');
       ix = (i * artis).toInt();
-      var y = 150 * cos(ix * pi / 180);
-      var x = 150 * sin(ix * pi / 180);
+      var y = CellConstant.instance.yaricap * cos(ix * pi / 180);
+      var x = CellConstant.instance.yaricap * sin(ix * pi / 180);
       var pos = new Positioned(
-          child: val, top: yuk / 2 + y - 25, left: gen / 2 + x-25 );
+          child: val,
+          top: yuk / 2 + y - CellConstant.instance.cellBorderHeight / 2,
+          left: gen / 2 + x - CellConstant.instance.cellBorderWitdh / 2);
       ledList.add(pos);
     });
     return ledList;
@@ -55,14 +57,18 @@ class BoardRing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    gen = context.dynamicWidth(1);
-    yuk = context.dynamicHeight(.6);
+    gen = context.dynamicWidth(.9);
+    //yuk = context.dynamicHeight(1);
+    yuk = CellConstant.instance.yaricap * 2.4;
     ratio = context.devicePixelRatio;
     //var widthTrans = context.widthTransformer();
     print('Device ${context.widthTransformer()}');
     _listeyaz();
     return Container(
-      color: ColorConstants.instance.bgColor,
+      width: gen,
+      height: yuk,
+      //color: ColorConstants.instance.bgColor,
+      //color: ColorConstants.instance.white, //tüm çember arka plan
       child: Stack(
         children: _listeyaz(),
       ),

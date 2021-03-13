@@ -8,7 +8,9 @@ class GameBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    
+    return InkWell(
+      
         onTap: () {
           timeController.isRunning.value == true
               ? timeController.pause()

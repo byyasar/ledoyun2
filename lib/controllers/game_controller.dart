@@ -1,6 +1,7 @@
 import 'dart:math';
-import 'package:flutter/src/widgets/basic.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ledoyun2/core/constant/cell_constant.dart';
 import 'package:ledoyun2/game_screen/widgets/cell.dart';
 
 class GameController extends GetxController {
@@ -11,9 +12,9 @@ class GameController extends GetxController {
   List<List<int>> get board => _board.value;
   set board(List<List<int>> value) => _board.value = value;
   Random random = Random();
-  int _ledSayisi = 16;
+  int _ledSayisi = CellConstant.instance.ledSayisi;
   int _index;
-  RxInt _RastgeleSayi = 0.obs;
+  RxInt _rastgeleSayi = 0.obs;
 
   RxInt _hizZaman = 500.obs;
   int get hizZaman => _hizZaman.value;
@@ -27,7 +28,7 @@ class GameController extends GetxController {
 
   void _gameBoard() {
     RastgeleSayiUret();
-    int r = RastgeleSayi;
+    int r = rastgeleSayi;
     print('Rastgele :$r');
     board[0][r] = 2;
     update();
@@ -39,7 +40,7 @@ class GameController extends GetxController {
   void tickArtir() {
     _tick.value += 1;
     print('Tick : $tick');
-    _index = _tick.value % 16;
+    _index = _tick.value % _ledSayisi;
     dondur();
   }
 
@@ -51,10 +52,10 @@ class GameController extends GetxController {
     print('Level : $level');
   }
 
-  int get RastgeleSayi => _RastgeleSayi.value;
+  int get rastgeleSayi => _rastgeleSayi.value;
   // ignore: non_constant_identifier_names
   void RastgeleSayiUret() {
-    _RastgeleSayi.value = random.nextInt(_ledSayisi);
+    _rastgeleSayi.value = random.nextInt(_ledSayisi);
     // print('RastgeleSayi : $RastgeleSayi');
   }
 
@@ -83,7 +84,7 @@ class GameController extends GetxController {
   }
 
   void _buildBoard() {
-    board = [List.filled(16, 0)];
+    board = [List.filled(_ledSayisi, 0)];
     _hiz.value = _level.value * 50;
     //update();
   }
@@ -151,7 +152,7 @@ class GameController extends GetxController {
 
   void dondur() {
     int targetIndex = board[0].indexOf(2);
-    board = [List.filled(16, 0)];
+    board = [List.filled(_ledSayisi, 0)];
     board[0][targetIndex] = 2;
     if (_index != targetIndex) board[0][_index] = 1;
     update();
@@ -159,7 +160,7 @@ class GameController extends GetxController {
 
   void durumKontrol() {
     //print('RastgeleSayi: $RastgeleSayi- index : $_index');
-    if (_index == RastgeleSayi) {
+    if (_index == rastgeleSayi) {
       winner = 1;
       declareWinner();
     } else {

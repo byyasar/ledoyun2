@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ledoyun2/core/constant/cell_constant.dart';
 
 class Coin extends StatelessWidget {
   //final Color coinColor;
@@ -15,20 +16,22 @@ class Coin extends StatelessWidget {
       Center(
         child: Container(
           //color: Colors.grey,
-          height: 40,
-          width: 40,
-          decoration: BoxDecoration(borderRadius: BorderRadius.circular(40),color: Colors.white),
-
-         
+          height: CellConstant.instance.cellBackHeight,
+          width: CellConstant.instance.cellBackWitdh,
+          decoration: BoxDecoration(
+              borderRadius:
+                  BorderRadius.circular(CellConstant.instance.cellBackWitdh),
+              color: Colors.white),
         ),
       ),
       Center(
         child: Container(
-          height: 35,
-          width: 35,
+          height: CellConstant.instance.cellHeight,
+          width: CellConstant.instance.cellWitdh,
           decoration: BoxDecoration(
               gradient: RadialGradient(colors: coinColor),
-              borderRadius: BorderRadius.circular(30)),
+              borderRadius:
+                  BorderRadius.circular(CellConstant.instance.cellHeight)),
         ),
       ),
     ]);

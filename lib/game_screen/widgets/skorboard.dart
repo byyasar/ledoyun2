@@ -16,16 +16,20 @@ class Skorboard extends StatelessWidget {
             children: [
               Text('Level : ${gameController.level}',
                   style: context.textTheme.subtitle1
-                      .copyWith(color: ColorConstants.instance.blueAccent)),
+                      .copyWith(color: ColorConstants.instance.blueAccent),
+                  textScaleFactor: 1.4),
               Text('Hız :${gameController.hiz}',
                   style: context.textTheme.subtitle1
-                      .copyWith(color: ColorConstants.instance.blueAccent)),
+                      .copyWith(color: ColorConstants.instance.blueAccent),
+                  textScaleFactor: 1.4),
               Text('Puan :${gameController.puan}',
                   style: context.textTheme.subtitle1
-                      .copyWith(color: ColorConstants.instance.blueAccent)),
+                      .copyWith(color: ColorConstants.instance.blueAccent),
+                  textScaleFactor: 1.4),
               Text('Hata :${gameController.hata}',
                   style: context.textTheme.subtitle1
-                      .copyWith(color: ColorConstants.instance.blueAccent)),
+                      .copyWith(color: ColorConstants.instance.blueAccent),
+                  textScaleFactor: 1.4),
             ],
           )),
     );

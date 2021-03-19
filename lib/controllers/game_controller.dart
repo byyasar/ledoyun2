@@ -18,6 +18,22 @@ class GameController extends GetxController {
   RxInt _rastgeleSayi = 0.obs;
   final player = AudioCache();
 
+  RxBool _ses = false.obs;
+  bool get ses => _ses.value;
+  set ses(bool value) => _ses.value = value;
+  void sesAcKapat() {
+    _ses.value = !_ses.value;
+    print('ses : $ses');
+  }
+
+  RxBool _bebekmod = false.obs;
+  bool get bebekmod => _bebekmod.value;
+  set bebekmod(bool value) => _bebekmod.value = value;
+  void bebekmodAcKapat() {
+    _bebekmod.value = !_bebekmod.value;
+    print('bebekmod : $bebekmod');
+  }
+
   RxInt _hizZaman = 500.obs;
   int get hizZaman => _hizZaman.value;
   set hizZaman(int value) => _hizZaman.value = value;
@@ -44,7 +60,6 @@ class GameController extends GetxController {
     print('Tick : $tick');
     _index = _tick.value % _ledSayisi;
     dondur();
-    
   }
 
   RxInt _level = 1.obs;
@@ -159,7 +174,7 @@ class GameController extends GetxController {
     board[0][targetIndex] = 2;
     if (_index != targetIndex) board[0][_index] = 1;
     update();
-    player.play('sesler/tick.wav');
+    _ses.value == true ? player.play('sesler/tick.wav') : "";
   }
 
   void durumKontrol() {

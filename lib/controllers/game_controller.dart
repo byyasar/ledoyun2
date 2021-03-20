@@ -8,10 +8,10 @@ import 'package:ledoyun2/game_screen/widgets/cell.dart';
 class GameController extends GetxController {
   //final TimerState timerController = Get.put(TimerState());
 
-  RxList<List<int>> _board = RxList<List<int>>();
+  List<List<int>> _board = RxList<List<int>>();
   // ignore: invalid_use_of_protected_member
-  List<List<int>> get board => _board.value;
-  set board(List<List<int>> value) => _board.value = value;
+  List<List<int>> get board => _board.toList();
+  set board(List<List<int>> value) => _board = value;
   Random random = Random();
   int _ledSayisi = CellConstant.instance.ledSayisi;
   int _index;
@@ -178,7 +178,7 @@ class GameController extends GetxController {
     board[0][targetIndex] = 2;
     if (_index != targetIndex) board[0][_index] = 1;
     update();
-    _ses.value == true ? player.play('sesler/tick.wav') : "";
+    if(_ses.value == true)player.play('sesler/tick.wav');
   }
 
   void durumKontrol() {
@@ -192,7 +192,7 @@ class GameController extends GetxController {
       _gameBoard();
       if (_hata.value == 3) {
         winner = 0;
-        _ses.value == true ? player.play('sesler/error.mp3') : "";
+       if(_ses.value == true)player.play('sesler/error.mp3');
         declareWinner();
       }
     }

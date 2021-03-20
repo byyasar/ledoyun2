@@ -7,7 +7,7 @@ import 'package:ledoyun2/core/extension/context_extension.dart';
 class Skorboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final GameController gameController = Get.find<GameController>();
+   // final GameController gameController = Get.find<GameController>();
 //ContextExtension
     return Container(
       width: MediaQuery.of(context).size.width * .9,

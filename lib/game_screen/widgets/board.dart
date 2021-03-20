@@ -35,8 +35,8 @@ class Board extends StatelessWidget {
       height: yuk,
       child: GetBuilder<GameController>(
         builder: (GetxController gameController) => Column(children: [
-          Expanded(flex: 1, child: Skorboard()),
-          Expanded(flex: 8, child: Stack(children: _buildBoard())),
+          Expanded(flex: 3, child: Skorboard()),
+          Expanded(flex: 6, child: Stack(children: _buildBoard())),
         ]),
       ),
     );

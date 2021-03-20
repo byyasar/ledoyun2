@@ -2,10 +2,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ledoyun2/controllers/game_controller.dart';
+import 'package:ledoyun2/core/extension/context_extension.dart';
 
 class MyDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    //ContextExtension
     final GameController gameController = Get.find<GameController>();
     return Drawer(
       child: ListView(
@@ -30,7 +32,7 @@ class MyDrawer extends StatelessWidget {
                         ? Icons.volume_up
                         : Icons.volume_off,
                     color: Colors.blue,
-                    size: 30.0,
+                    size: 25.0,
                   ),
                   title: Row(
                     children: [
@@ -38,7 +40,8 @@ class MyDrawer extends StatelessWidget {
                       Text(
                         'SES :\n' +
                             (gameController.ses == true ? "Açık" : "Kapalı"),
-                        style: TextStyle(fontSize: 16),
+                        style: context.textThema.subtitle1
+                            .copyWith(fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                       Spacer()
@@ -63,7 +66,7 @@ class MyDrawer extends StatelessWidget {
                         ? Icons.stroller
                         : Icons.no_stroller,
                     color: Colors.blue,
-                    size: 30.0,
+                    size: 25.0,
                   ),
                   title: Row(
                     children: [
@@ -73,7 +76,8 @@ class MyDrawer extends StatelessWidget {
                             (gameController.bebekmod == true
                                 ? "Açık"
                                 : "Kapalı"),
-                        style: TextStyle(fontSize: 16),
+                        style: context.textThema.subtitle1
+                            .copyWith(fontWeight: FontWeight.bold),
                         textAlign: TextAlign.center,
                       ),
                       Spacer()
@@ -93,11 +97,11 @@ class MyDrawer extends StatelessWidget {
               )),
           Card(
             child: ListTile(
-              leading: FlutterLogo(),
-              title: Text('Item 2'),
-              onTap: () {
-                gameController.sesAcKapat();
-              },
+              leading: Icon(
+                Icons.link,
+                color: context.colors.primary,
+              ),
+              title: Text('Refkles v1.0'),
             ),
           ),
         ],

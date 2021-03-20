@@ -77,7 +77,7 @@ class GameController extends GetxController {
     // print('RastgeleSayi : $RastgeleSayi');
   }
 
-  RxInt _hiz = 0.obs;
+  RxInt _hiz = 50.obs;
   int get hiz => _hiz.value;
   set hiz(int value) => _hiz.value = value;
   void hizArtir(int value) {
@@ -103,7 +103,7 @@ class GameController extends GetxController {
 
   void _buildBoard() {
     board = [List.filled(_ledSayisi, 0)];
-    _hiz.value = _level.value * 50;
+    // _hiz.value =  50;
     //update();
   }
 
@@ -164,7 +164,11 @@ class GameController extends GetxController {
     _gameBoard();
     _puan.value = (_level.value * 3 - _hata.value);
     _hata.value = 0;
-    _hizZaman.value <= 200 ? hizlan(10) : hizlan(100);
+    if (_bebekmod.value == false) {
+      print('bebek mod kapalı');
+      _hizZaman.value <= 200 ? hizlan(10) : hizlan(100);
+      _hiz.value = _level.value * 50;
+    }
     levelArtir();
   }
 
@@ -188,7 +192,7 @@ class GameController extends GetxController {
       _gameBoard();
       if (_hata.value == 3) {
         winner = 0;
-        player.play('sesler/error.mp3');
+        _ses.value == true ? player.play('sesler/error.mp3') : "";
         declareWinner();
       }
     }

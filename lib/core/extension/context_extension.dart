@@ -22,6 +22,7 @@ extension ThemeExtension on BuildContext {
   TextTheme get textThema => theme.textTheme;
   ColorScheme get colors => theme.colorScheme;
 }
+ 
 
 extension PaddingExtensionAll on BuildContext {
   EdgeInsets get paddingLow => EdgeInsets.all(lowValue);

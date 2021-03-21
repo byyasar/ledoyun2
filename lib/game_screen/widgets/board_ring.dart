@@ -39,13 +39,16 @@ class BoardRing extends StatelessWidget {
   List<Widget> _listeyaz() {
     List<Widget> ledList = [];
     var ix = 0;
+    double oran = gen / 400;
+    oran >= 1.50 ?oran= 1.50 : oran=oran;
+    double yaricap = (CellConstant.instance.yaricap)*oran;
     double artis = 360 / CellConstant.instance.ledSayisi;
     //print(_buildBoardColumn().length);
     _buildBoardColumn().asMap().forEach((i, val) {
       //print('$i: $val');
       ix = (i * artis).toInt();
-      var y = CellConstant.instance.yaricap * cos(ix * pi / 180);
-      var x = CellConstant.instance.yaricap * sin(ix * pi / 180);
+      var y = yaricap * cos(ix * pi / 180);
+      var x = yaricap * sin(ix * pi / 180);
       var pos = new Positioned(
           child: val,
           top: yuk / 2 + y - CellConstant.instance.cellBorderHeight / 2,
@@ -59,7 +62,10 @@ class BoardRing extends StatelessWidget {
   Widget build(BuildContext context) {
     gen = context.dynamicWidth(.9);
     //yuk = context.dynamicHeight(1);
-    yuk = CellConstant.instance.yaricap * 2.4;
+    double oran = gen / 400;
+    oran >= 1.50 ?oran= 1.50 : oran=oran;
+    double yaricap = (CellConstant.instance.yaricap)*oran;
+    yuk = yaricap* 2.4;
     ratio = context.devicePixelRatio;
     //var widthTrans = context.widthTransformer();
     print('Device ${context.widthTransformer()}');

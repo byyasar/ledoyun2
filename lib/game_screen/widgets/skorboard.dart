@@ -28,7 +28,7 @@ class Skorboard extends StatelessWidget {
   Card levelBuild(BuildContext context) {
     final GameController gameController = Get.find<GameController>();
     return Card(
-      color: Colors.amber,
+      color: ColorConstants.instance.myTheme.accentColor,
       shadowColor: context.colors.onPrimary,
       elevation: 2.0,
       child: Padding(

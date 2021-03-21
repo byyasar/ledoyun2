@@ -18,5 +18,6 @@ samples, guidance on mobile development, and a full API reference.
 
 Delete the pubspec.lock file then run the command flutter pub get again
 
-cd D:\Program Files\Microvirt\MEmu
+cd D:\Program Files\Microvirt\MEmu\
 adb connect localhost:21503
+adb devices -l

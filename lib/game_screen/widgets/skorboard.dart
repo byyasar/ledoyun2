@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ledoyun2/controllers/game_controller.dart';
-import 'package:ledoyun2/core/constant/color_constant.dart';
+import 'package:ledoyun2/core/constant/theme.dart';
 import 'package:ledoyun2/core/extension/context_extension.dart';
 
 class Skorboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-   // final GameController gameController = Get.find<GameController>();
+    // myTheme
+    // final GameController gameController = Get.find<GameController>();
 //ContextExtension
     return Container(
       width: MediaQuery.of(context).size.width * .9,
@@ -28,15 +29,14 @@ class Skorboard extends StatelessWidget {
   Card levelBuild(BuildContext context) {
     final GameController gameController = Get.find<GameController>();
     return Card(
-      color: ColorConstants.instance.myTheme.accentColor,
-      shadowColor: context.colors.onPrimary,
+      color: myTheme.accentColor,
+      shadowColor: myTheme.accentColor,
       elevation: 2.0,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text('Level : ${gameController.level}',
             style: context.textThema.subtitle1.copyWith(
-                color: ColorConstants.instance.blueAccent,
-                fontWeight: FontWeight.bold),
+                color: myTheme.canvasColor, fontWeight: FontWeight.bold),
             textScaleFactor: 1.4),
       ),
     );
@@ -45,15 +45,14 @@ class Skorboard extends StatelessWidget {
   Card hizBuild(BuildContext context) {
     final GameController gameController = Get.find<GameController>();
     return Card(
-      color: Colors.amber,
-      shadowColor: context.colors.onPrimary,
+      color: myTheme.accentColor,
+      shadowColor: myTheme.accentColor,
       elevation: 2.0,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Text('Hız :${gameController.hiz}',
             style: context.textThema.subtitle1.copyWith(
-                color: ColorConstants.instance.blueAccent,
-                fontWeight: FontWeight.bold),
+                color: myTheme.canvasColor, fontWeight: FontWeight.bold),
             textScaleFactor: 1.4),
       ),
     );
@@ -63,15 +62,14 @@ class Skorboard extends StatelessWidget {
 puanBuild(BuildContext context) {
   final GameController gameController = Get.find<GameController>();
   return Card(
-    color: Colors.amber,
-    shadowColor: context.colors.onPrimary,
+    color: myTheme.accentColor,
+    shadowColor: myTheme.accentColor,
     elevation: 2.0,
     child: Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text('Puan :${gameController.puan}',
           style: context.textThema.subtitle1.copyWith(
-              color: ColorConstants.instance.blueAccent,
-              fontWeight: FontWeight.bold),
+              color: myTheme.canvasColor, fontWeight: FontWeight.bold),
           textScaleFactor: 1.4),
     ),
   );
@@ -80,15 +78,14 @@ puanBuild(BuildContext context) {
 hataBuild(BuildContext context) {
   final GameController gameController = Get.find<GameController>();
   return Card(
-    color: Colors.amber,
-    shadowColor: context.colors.onPrimary,
+    color: myTheme.accentColor,
+    shadowColor: myTheme.accentColor,
     elevation: 2.0,
     child: Padding(
       padding: const EdgeInsets.all(8.0),
       child: Text('Hata :${gameController.hata}',
           style: context.textThema.subtitle1.copyWith(
-              color: ColorConstants.instance.blueAccent,
-              fontWeight: FontWeight.bold),
+              color: myTheme.canvasColor, fontWeight: FontWeight.bold),
           textScaleFactor: 1.4),
     ),
   );

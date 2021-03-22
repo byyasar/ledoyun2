@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ledoyun2/controllers/game_controller.dart';
+import 'package:ledoyun2/core/constant/theme.dart';
 import 'package:ledoyun2/core/extension/context_extension.dart';
 
 class MyDrawer extends StatelessWidget {
@@ -22,7 +23,7 @@ class MyDrawer extends StatelessWidget {
               ),
             ),
             decoration: BoxDecoration(
-              color: Colors.blue,
+              color: myTheme.accentColor,
             ),
           ),
           Obx(() => Card(
@@ -31,7 +32,7 @@ class MyDrawer extends StatelessWidget {
                     gameController.ses == true
                         ? Icons.volume_up
                         : Icons.volume_off,
-                    color: Colors.blue,
+                    color: myTheme.accentColor,
                     size: 25.0,
                   ),
                   title: Row(
@@ -65,7 +66,7 @@ class MyDrawer extends StatelessWidget {
                     gameController.bebekmod == true
                         ? Icons.stroller
                         : Icons.no_stroller,
-                    color: Colors.blue,
+                    color: myTheme.accentColor,
                     size: 25.0,
                   ),
                   title: Row(
@@ -99,7 +100,7 @@ class MyDrawer extends StatelessWidget {
             child: ListTile(
               leading: Icon(
                 Icons.link,
-                color: context.colors.primary,
+                color: myTheme.accentColor,
               ),
               title: Text('Refkles v1.0'),
             ),

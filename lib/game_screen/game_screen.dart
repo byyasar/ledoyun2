@@ -59,6 +59,26 @@ class GameScreen extends StatelessWidget {
               onTap: () => gameController.bebekmodAcKapat(),
             )),
       ),
+      Padding(
+        padding: EdgeInsets.only(right: 5.0),
+        child: Obx(() => GestureDetector(
+              child: Icon(
+                gameController.darkmod == false
+                    ? Icons.lightbulb
+                    : Icons.lightbulb_outlined,
+                color: myTheme.accentColor,
+                size: 25.0,
+              ),
+              onTap: themaDegistir,
+            )),
+      ),
     ];
+  }
+
+  void themaDegistir() {
+    gameController.darkmodAcKapat();
+    Get.isDarkMode == false
+        ? Get.changeTheme(ThemeData.dark())
+        : Get.changeTheme(ThemeData.light());
   }
 }

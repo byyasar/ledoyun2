@@ -34,10 +34,20 @@ class Skorboard extends StatelessWidget {
       elevation: 2.0,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text('Level : ${gameController.level}',
-            style: context.textThema.subtitle1.copyWith(
-                color: myTheme.canvasColor, fontWeight: FontWeight.bold),
-            textScaleFactor: 1.4),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.time_to_leave_outlined,
+              color: myTheme.canvasColor,
+            ),
+            SizedBox(width: 5),
+            Text('level'.tr + ' : ${gameController.level}',
+                style: context.textThema.subtitle1.copyWith(
+                    color: myTheme.canvasColor, fontWeight: FontWeight.bold),
+                textScaleFactor: 1.4),
+          ],
+        ),
       ),
     );
   }
@@ -50,10 +60,20 @@ class Skorboard extends StatelessWidget {
       elevation: 2.0,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Text('Hız :${gameController.hiz}',
-            style: context.textThema.subtitle1.copyWith(
-                color: myTheme.canvasColor, fontWeight: FontWeight.bold),
-            textScaleFactor: 1.4),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.speed,
+              color: myTheme.canvasColor,
+            ),
+            SizedBox(width: 5),
+            Text('speed'.tr + ' : ${gameController.hiz}',
+                style: context.textThema.subtitle1.copyWith(
+                    color: myTheme.canvasColor, fontWeight: FontWeight.bold),
+                textScaleFactor: 1.4),
+          ],
+        ),
       ),
     );
   }
@@ -67,10 +87,20 @@ puanBuild(BuildContext context) {
     elevation: 2.0,
     child: Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Text('Puan :${gameController.puan}',
-          style: context.textThema.subtitle1.copyWith(
-              color: myTheme.canvasColor, fontWeight: FontWeight.bold),
-          textScaleFactor: 1.4),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.score,
+            color: myTheme.canvasColor,
+          ),
+          SizedBox(width: 5),
+          Text('score'.tr + ' : ${gameController.puan}',
+              style: context.textThema.subtitle1.copyWith(
+                  color: myTheme.canvasColor, fontWeight: FontWeight.bold),
+              textScaleFactor: 1.4),
+        ],
+      ),
     ),
   );
 }
@@ -83,10 +113,20 @@ hataBuild(BuildContext context) {
     elevation: 2.0,
     child: Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Text('Hata :${gameController.hata}',
-          style: context.textThema.subtitle1.copyWith(
-              color: myTheme.canvasColor, fontWeight: FontWeight.bold),
-          textScaleFactor: 1.4),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(
+            Icons.error,
+            color: myTheme.canvasColor,
+          ),
+          SizedBox(width: 5),
+          Text('error'.tr + ' : ${gameController.hata}',
+              style: context.textThema.subtitle1.copyWith(
+                  color: myTheme.canvasColor, fontWeight: FontWeight.bold),
+              textScaleFactor: 1.4),
+        ],
+      ),
     ),
   );
 }

@@ -34,6 +34,22 @@ class GameController extends GetxController {
     print('bebekmod : $bebekmod');
   }
 
+  RxBool _darkmod = false.obs;
+  bool get darkmod => _darkmod.value;
+  set darkmod(bool value) => _darkmod.value = value;
+  void darkmodAcKapat() {
+    _darkmod.value = !_darkmod.value;
+    print('darkmod : $darkmod');
+  }
+
+  RxBool _language = false.obs;
+  bool get language => _language.value;
+  set language(bool value) => _language.value = value;
+  void languageDegistir() {
+    _language.value = !_language.value;
+    print('language : $language');
+  }
+
   RxInt _hizZaman = 500.obs;
   int get hizZaman => _hizZaman.value;
   set hizZaman(int value) => _hizZaman.value = value;
@@ -121,20 +137,22 @@ class GameController extends GetxController {
     Get.defaultDialog(
       //backgroundColor: ColorConstants.instance.bgColor,
       title: _hata.value == 0
-          ? 'MÜKEMMEL'
+          ? 'perfect'.tr
           : _hata.value == 1
-              ? 'SüPER'
+              ? 'super'.tr
               : _hata.value == 2
-                  ? 'BRAVO'
-                  : ' OYUN BİTTİ !!! \nPuanınız : $puan',
+                  ? 'good'.tr
+                  : 'gameover'.tr + ' !!! \n' + 'score'.tr + ' : $puan',
       content: _hata.value == 0
           ? Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Cell(
                   currentCellMode:
                       winner == 1 ? cellMode.YELLOW : cellMode.RED),
+                      SizedBox(width:2),
               Cell(
                   currentCellMode:
                       winner == 1 ? cellMode.YELLOW : cellMode.RED),
+                       SizedBox(width:2),
               Cell(
                   currentCellMode:
                       winner == 1 ? cellMode.YELLOW : cellMode.RED),
@@ -144,6 +162,7 @@ class GameController extends GetxController {
                   Cell(
                       currentCellMode:
                           winner == 1 ? cellMode.YELLOW : cellMode.RED),
+                           SizedBox(width:2),
                   Cell(
                       currentCellMode:
                           winner == 1 ? cellMode.YELLOW : cellMode.RED)
@@ -178,7 +197,7 @@ class GameController extends GetxController {
     board[0][targetIndex] = 2;
     if (_index != targetIndex) board[0][_index] = 1;
     update();
-    if(_ses.value == true)player.play('sesler/tick.wav');
+    if (_ses.value == true) player.play('sesler/tick.wav');
   }
 
   void durumKontrol() {
@@ -192,7 +211,7 @@ class GameController extends GetxController {
       _gameBoard();
       if (_hata.value == 3) {
         winner = 0;
-       if(_ses.value == true)player.play('sesler/error.mp3');
+        if (_ses.value == true) player.play('sesler/error.mp3');
         declareWinner();
       }
     }

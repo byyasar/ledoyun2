@@ -21,3 +21,4 @@ Delete the pubspec.lock file then run the command flutter pub get again
 cd D:\Program Files\Microvirt\MEmu\
 adb connect localhost:21503
 adb devices -l
+adb devices -l

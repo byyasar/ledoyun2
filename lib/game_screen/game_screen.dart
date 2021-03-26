@@ -1,4 +1,7 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:ledoyun2/controllers/game_controller.dart';
 import 'package:ledoyun2/core/constant/color_constant.dart';
@@ -14,22 +17,25 @@ class GameScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //ContextExtension
 
-    return Scaffold(
-      backgroundColor: ColorConstants.instance.white,
-      appBar: AppBar(
-        iconTheme: IconThemeData(color: myTheme.accentColor),
-        centerTitle: true,
+    return WillPopScope(
+      onWillPop: _onBackPressed,
+      child: Scaffold(
         backgroundColor: ColorConstants.instance.white,
-        elevation: 0,
-        title: Text(
-          'Refleks Game',
-          style: context.textThema.headline5.copyWith(
-              color: context.colors.secondary, fontWeight: FontWeight.bold),
+        appBar: AppBar(
+          iconTheme: IconThemeData(color: myTheme.accentColor),
+          centerTitle: true,
+          backgroundColor: ColorConstants.instance.white,
+          elevation: 0,
+          title: Text(
+            'Refleks Game',
+            style: context.textThema.headline5.copyWith(
+                color: context.colors.secondary, fontWeight: FontWeight.bold),
+          ),
+          actions: buildActions(),
         ),
-        actions: buildActions(),
+        body: GameBody(),
+        drawer: MyDrawer(),
       ),
-      body: GameBody(),
-      drawer: MyDrawer(),
     );
   }
 
@@ -80,5 +86,16 @@ class GameScreen extends StatelessWidget {
     Get.isDarkMode == false
         ? Get.changeTheme(ThemeData.dark())
         : Get.changeTheme(ThemeData.light());
+  }
+
+  Future<bool> _onBackPressed() async {
+    Get.back();
+    // if (Platform.isAndroid) {
+    //   SystemNavigator.pop();
+    // } else if (Platform.isIOS) {
+    //   exit(0);
+    // }
+    print('çıkış');
+    return true;
   }
 }

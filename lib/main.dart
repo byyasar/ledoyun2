@@ -4,6 +4,7 @@ import 'package:ledoyun2/core/bindings/main_bindings.dart';
 import 'package:ledoyun2/core/constant/ceviri.dart';
 import 'package:ledoyun2/core/constant/theme.dart';
 import 'package:ledoyun2/game_screen/game_screen.dart';
+import 'package:ledoyun2/splash_screen/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -24,7 +25,8 @@ class MyApp extends StatelessWidget {
       theme: myTheme,
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => GameScreen()),
+        GetPage(name: '/', page: () => SplahScreen()),
+        GetPage(name: '/gameScreen', page: () => GameScreen(),binding:MainBindings() ),
       ],
     );
   }

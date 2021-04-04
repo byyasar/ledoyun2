@@ -132,6 +132,12 @@ class GameController extends GetxController {
     board[0][0] = 1;
   }
 
+  @override
+  void onClose() {
+    print('GameController onClose');
+    super.onClose();
+  }
+
   int winner = 0;
   void declareWinner() {
     Get.defaultDialog(
@@ -148,11 +154,11 @@ class GameController extends GetxController {
               Cell(
                   currentCellMode:
                       winner == 1 ? cellMode.YELLOW : cellMode.RED),
-                      SizedBox(width:2),
+              SizedBox(width: 2),
               Cell(
                   currentCellMode:
                       winner == 1 ? cellMode.YELLOW : cellMode.RED),
-                       SizedBox(width:2),
+              SizedBox(width: 2),
               Cell(
                   currentCellMode:
                       winner == 1 ? cellMode.YELLOW : cellMode.RED),
@@ -162,7 +168,7 @@ class GameController extends GetxController {
                   Cell(
                       currentCellMode:
                           winner == 1 ? cellMode.YELLOW : cellMode.RED),
-                           SizedBox(width:2),
+                  SizedBox(width: 2),
                   Cell(
                       currentCellMode:
                           winner == 1 ? cellMode.YELLOW : cellMode.RED)

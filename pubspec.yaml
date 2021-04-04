@@ -21,6 +21,11 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  flutter_launcher_icons: ^0.9.0
+  flutter_launcher_name: 
+    git:
+      url: https://github.com/ride4sun/flutter_launcher_name
+      ref: "0.9.1"
   flutter:
     sdk: flutter
 
@@ -33,6 +38,14 @@ dependencies:
   audioplayers: ^0.18.1
   url_launcher: ^5.4.1
   lottie: ^1.0.1
+  
+flutter_launcher_name:
+  name: "Refleks"
+
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/icons/icon.png"
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +66,7 @@ flutter:
   assets:
     - assets/sesler/
     - assets/images/
+
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

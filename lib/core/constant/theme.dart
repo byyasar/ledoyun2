@@ -65,7 +65,6 @@ final ThemeData myTheme = ThemeData(
     ),
   ),
   textTheme: TextTheme(
-    
     caption: TextStyle(
       color: Color(0x8a000000),
       fontSize: null,

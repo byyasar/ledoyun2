@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       initialBinding: MainBindings(),
       title: 'JavaScript game',
       theme: myTheme,
-      initialRoute: '/',
+      initialRoute: '/gameScreen',
       getPages: [
         GetPage(name: '/', page: () => SplahScreen()),
         GetPage(name: '/gameScreen', page: () => GameScreen(),binding:MainBindings() ),

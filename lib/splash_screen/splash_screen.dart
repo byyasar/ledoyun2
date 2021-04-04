@@ -12,7 +12,7 @@ class _SplahScreenState extends State<SplahScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 3), () {
-      Get.offNamed("/gameScreen");
+      Get.offAndToNamed("/gameScreen");
       //Get.toNamed("/gameScreen");
     });
   }

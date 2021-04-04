@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -18,7 +17,20 @@ class GameScreen extends StatelessWidget {
     //ContextExtension
 
     return WillPopScope(
-      onWillPop: _onBackPressed,
+      onWillPop: () async {
+        print('on will çalıştır');
+        if (Platform.isAndroid) {
+          print('android ');
+          // Get.back();
+          // await SystemNavigator.pop();
+          //SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+          return false;
+        } else {
+          print('android xx ');
+          return true;
+        }
+        //
+      },
       child: Scaffold(
         backgroundColor: ColorConstants.instance.white,
         appBar: AppBar(
@@ -28,10 +40,10 @@ class GameScreen extends StatelessWidget {
           elevation: 0,
           title: Text(
             'Refleks Game',
-            style: context.textThema.headline5.copyWith(
+            style: context.textTheme.headline5.copyWith(
                 color: context.colors.secondary, fontWeight: FontWeight.bold),
           ),
-          actions: buildActions(),
+          actions: buildActions(context),
         ),
         body: GameBody(),
         drawer: MyDrawer(),
@@ -39,44 +51,62 @@ class GameScreen extends StatelessWidget {
     );
   }
 
-  List<Widget> buildActions() {
+  List<Widget> buildActions(BuildContext context) {
     return [
       Padding(
-        padding: EdgeInsets.only(right: 5.0),
+        padding: EdgeInsets.only(right: 2.0),
         child: Obx(() => GestureDetector(
               child: Icon(
                 gameController.ses == true ? Icons.volume_up : Icons.volume_off,
                 color: myTheme.accentColor,
-                size: 25.0,
+                size: 20.0,
               ),
               onTap: () => gameController.sesAcKapat(),
             )),
       ),
       Padding(
-        padding: EdgeInsets.only(right: 5.0),
+        padding: EdgeInsets.only(right: 2.0),
         child: Obx(() => GestureDetector(
               child: Icon(
                 gameController.bebekmod == true
                     ? Icons.stroller
                     : Icons.no_stroller,
                 color: myTheme.accentColor,
-                size: 25.0,
+                size: 20.0,
               ),
               onTap: () => gameController.bebekmodAcKapat(),
             )),
       ),
       Padding(
-        padding: EdgeInsets.only(right: 5.0),
+        padding: EdgeInsets.only(right: 2.0),
         child: Obx(() => GestureDetector(
               child: Icon(
                 gameController.darkmod == false
                     ? Icons.lightbulb
                     : Icons.lightbulb_outlined,
                 color: myTheme.accentColor,
-                size: 25.0,
+                size: 20.0,
               ),
               onTap: themaDegistir,
             )),
+      ),
+      Padding(
+        padding: EdgeInsets.only(right: 2.0),
+        child: GestureDetector(
+          child: Icon(
+            Icons.exit_to_app,
+            color: myTheme.accentColor,
+            size: 20.0,
+          ),
+          onTap: () {
+            print('kapat');
+            if (Platform.isAndroid) {
+              SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+            } else if (Platform.isIOS) {
+              //exit(0);
+            }
+          },
+        ),
       ),
     ];
   }
@@ -86,16 +116,5 @@ class GameScreen extends StatelessWidget {
     Get.isDarkMode == false
         ? Get.changeTheme(ThemeData.dark())
         : Get.changeTheme(ThemeData.light());
-  }
-
-  Future<bool> _onBackPressed() async {
-    Get.back();
-    // if (Platform.isAndroid) {
-    //   SystemNavigator.pop();
-    // } else if (Platform.isIOS) {
-    //   exit(0);
-    // }
-    print('çıkış');
-    return true;
   }
 }

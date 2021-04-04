@@ -22,3 +22,7 @@ cd D:\Program Files\Microvirt\MEmu\
 adb connect localhost:21503
 adb devices -l
 adb devices -l
+
+flutter pub get
+flutter pub run flutter_launcher_name:main
+flutter pub run flutter_launcher_icons:main

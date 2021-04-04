@@ -8,8 +8,6 @@ class TimerState extends GetxController {
   Stopwatch _tsw = Stopwatch();
   Timer t, t2;
 
-  
-
   //final player = AudioCache();
 
   // the two lines below are the same, just different ways of
@@ -133,5 +131,11 @@ class TimerState extends GetxController {
     t2.cancel();
     minutesInputController.value.dispose();
     secondsInputController.value.dispose();
+  }
+
+  @override
+  void onClose() {
+    print('TimeController onClose');
+    super.onClose();
   }
 }
